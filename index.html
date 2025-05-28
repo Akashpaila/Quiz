@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Check Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+    <div id="quiz-container" class="w-full max-w-2xl p-4 sm:p-6 bg-gray-800 rounded-lg shadow-lg">
+        <!-- Loader -->
+        <div id="loader" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        </div>
+        <!-- Configuration Section -->
+        <div id="config-section" class="space-y-4">
+            <h1 class="text-2xl sm:text-3xl font-bold text-center">Vibe Check Quiz App</h1>
+            <div>
+                <label class="block text-base sm:text-lg">Select Subject:</label>
+                <select id="subject" class="w-full p-2 text-sm sm:text-base bg-gray-700 rounded">
+                    <option value="9">General Knowledge</option>
+                    <option value="17">Science</option>
+                    <option value="23">Social Studies (History)</option>
+                    <option value="19">Mathematics</option>
+                    <option value="21">DBMS</option>
+                    <option value="18">OS & Compilers (Computer Science)</option>
+                    <option value="11">Entertainment: Film</option>
+                    <option value="22">Geography</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-base sm:text-lg">Select Difficulty:</label>
+                <select id="difficulty" class="w-full p-2 text-sm sm:text-base bg-gray-700 rounded">
+                    <option value="easy">Beginner</option>
+                    <option value="medium">Intermediate</option>
+                    <option value="hard">Advanced</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-base sm:text-lg">Number of Questions:</label>
+                <select id="num-questions" class="w-full p-2 text-sm sm:text-base bg-gray-700 rounded">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                </select>
+            </div>
+            <button id="start-quiz" class="w-full p-2 text-sm sm:text-base bg-blue-600 hover:bg-blue-700 rounded">Start Quiz</button>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz-section" class="hidden space-y-4">
+            <div class="flex flex-col sm:flex-row justify-between">
+                <h2 id="question-number" class="text-base sm:text-lg"></h2>
+                <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                    <span id="current-score" class="text-base sm:text-lg"></span>
+                    <span id="timer" class="text-base sm:text-lg"></span>
+                    <button id="extend-time" class="p-1 text-xs sm:text-sm bg-yellow-600 hover:bg-yellow-700 rounded">Extend Time (-5 points)</button>
+                </div>
+            </div>
+            <div class="w-full bg-gray-700 rounded h-2">
+                <div id="progress-bar" class="bg-blue-600 h-2 rounded transition-all duration-300"></div>
+            </div>
+            <h2 id="question" class="text-lg sm:text-xl font-semibold"></h2>
+            <div id="options" class="space-y-2"></div>
+            <button id="submit-answer" class="w-full p-2 text-sm sm:text-base bg-blue-600 rounded">Submit Answer</button>
+        </div>
+
+        <!-- Results Section -->
+        <div id="result-section" class="hidden space-y-4">
+            <h2 class="text-xl sm:text-2xl font-bold text-center">Quiz Results</h2>
+            <p id="score" class="text-base sm:text-lg"></p>
+            <div id="explanations" class="space-y-4"></div>
+            <button id="restart-quiz" class="w-full p-2 text-sm sm:text-base bg-blue-600 hover:bg-blue-700 rounded">Restart Quiz</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
